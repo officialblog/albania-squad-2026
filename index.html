@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBANIA SQUAD 2026 | Ksamil & Tirana • 3–10 Agosto</title>
+    <meta name="description" content="Itinerario interattivo, guida spiagge, budget manager e logistica per il viaggio del gruppo a Ksamil e Tirana (3–10 Agosto).">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER & NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand">
+                <span class="flag-icon">🇦🇱</span>
+                <span class="brand-text">KSAMIL<strong>2026</strong></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#info-rapide"><i class="fa-solid fa-bolt"></i> Logistica</a>
+                <a href="#itinerario"><i class="fa-solid fa-map-location-dot"></i> Itinerario</a>
+                <a href="#budget-tool"><i class="fa-solid fa-calculator"></i> Budget & Split</a>
+                <a href="#checklist"><i class="fa-solid fa-list-check"></i> Checklist</a>
+            </nav>
+            <a href="#budget-tool" class="cta-pill">Calcola Quota <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION CON COUNTDOWN -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content">
+            <div class="badge-pill">
+                <span class="pulse-dot"></span> SQUAD TOUR • 3–10 AGOSTO • 8 AMICI
+            </div>
+            <h1 class="hero-title">
+                Ksamil <span class="accent-gradient">&</span> Tirana
+            </h1>
+            <p class="hero-subtitle">
+                Il sito ufficiale della nostra settimana in Albania tra spiagge caraibiche, gite in traghetto a Corfù, rafting sul Vjosa e casinò a Tirana.
+            </p>
+
+            <!-- COUNTDOWN -->
+            <div class="countdown-card">
+                <div class="countdown-title"><i class="fa-solid fa-plane-departure"></i> DECOLLO DA ROMA CIAMPINO (07:40) IN:</div>
+                <div class="countdown-grid" id="countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <label>Giorni</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <label>Ore</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <label>Minuti</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <label>Secondi</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#itinerario" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Esplora Giorno x Giorno</a>
+                <a href="#budget-tool" class="btn btn-secondary"><i class="fa-solid fa-wallet"></i> Splitter Spese</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGISTICA & INFO RAPIDE -->
+    <section id="info-rapide" class="section container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-circle-info"></i> Logistica & Squad Info</h2>
+            <p>Tutto quello che c'è da sapere prima di partire senza perdersi nelle chat di gruppo.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="icon-wrap cyan"><i class="fa-solid fa-plane"></i></div>
+                <h3>Voli A/R & Orari</h3>
+                <p><strong>Andata (3 Ago):</strong> Roma Ciampino (CIA) 07:40 → 09:05 Tirana (TIA).<br>
+                <strong>Ritorno (10 Ago):</strong> Tirana (TIA) 19:45 → 21:10 Roma Ciampino.</p>
+                <div class="info-meta">
+                    <span>✅ Puntuali a Ciampino!</span>
+                    <span>Voli diretti</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrap green"><i class="fa-solid fa-hotel"></i></div>
+                <h3>Hotel a Ksamil</h3>
+                <p>Soggiorneremo all'<strong>Hotel Mare</strong>.<br>
+                <a href="https://www.google.com/maps/search/Hotel+Mare+Ksamil+Rruga+Riviera+9607/" target="_blank" class="ext-link" style="margin-top:4px;">Rruga Riviera, 9607 Ksamil, Albania <i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+                <div class="info-meta">
+                    <span>Posizione sul mare</span>
+                    <span>Check-in 3 Ago • Check-out 9 Ago</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrap cyan"><i class="fa-solid fa-taxi"></i></div>
+                <h3>Taxi Tirana ↔ Ksamil</h3>
+                <p>2 taxi confermati su WhatsApp con <strong>Fesim Taxi Tirana</strong>. 185 km di strada panoramica (3.5-4h).</p>
+                <div class="info-meta">
+                    <span><strong>600€</strong> totali A/R</span>
+                    <span><strong>~37.50€</strong> a testa/tratta</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrap orange"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                <h3>Valuta & Cambio</h3>
+                <p>In Albania si usa il <strong>Lek (LEK)</strong>. Molti lidi e locali accettano anche € in contanti.</p>
+                <div class="info-meta">
+                    <span><strong>1€ ≈ 100 LEK</strong></span>
+                    <span>Consigliato contante per lidi</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrap purple"><i class="fa-solid fa-sim-card"></i></div>
+                <h3>Internet & E-SIM</h3>
+                <p>Scarica prima di partire per avere giga illimitati appena atterrati a Tirana.</p>
+                <div class="info-meta">
+                    <span><strong>Roamic</strong> (~20€ illimitati)</span>
+                    <span><strong>Holafly</strong> (altissima rete)</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-wrap green"><i class="fa-solid fa-car"></i></div>
+                <h3>Parcheggio Ciampino</h3>
+                <p>Già prenotato per lasciare le auto del gruppo pronte e sicure per il ritorno.</p>
+                <div class="info-meta">
+                    <span>✅ Auto <strong>Diego & Giulia</strong></span>
+                    <span>Ritrovo prima del volo 07:40</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARIO GIORNO PER GIORNO -->
+    <section id="itinerario" class="section container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-route"></i> Itinerario Giorno per Giorno</h2>
+            <p>Filtra per giorno oppure esplora tutta l'avventura dal mare alla capitale.</p>
+        </div>
+
+        <!-- FILTRI GIORNI -->
+        <div class="day-filter-bar">
+            <button class="day-btn active" data-day="all">Tutti (3-10 Ago)</button>
+            <button class="day-btn" data-day="day-1">LUN 3 • Arrivo</button>
+            <button class="day-btn" data-day="day-2">MAR 4 • Spiagge</button>
+            <button class="day-btn" data-day="day-3">MER 5 • Blue Eye</button>
+            <button class="day-btn" data-day="day-4">GIO 6 • Spiagge Lontane</button>
+            <button class="day-btn" data-day="day-5">VEN 7 • Corfù & Traghetto</button>
+            <button class="day-btn" data-day="day-6">SAB 8 • Rafting Vjosa</button>
+            <button class="day-btn" data-day="day-7">DOM 9 • Tirana & Casinò</button>
+            <button class="day-btn" data-day="day-8">LUN 10 • Rientro</button>
+        </div>
+
+        <!-- CARDS ITINERARIO -->
+        <div class="itinerary-grid">
+
+            <!-- GIORNO 1 -->
+            <article class="day-card" data-day="day-1">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=800&q=80" alt="Ksamil Spiaggia">
+                    <span class="day-tag">GIORNO 1 • LUNEDÌ 3 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge relax">Viaggio</span>
+                        <span class="badge mare">Hotel Mare</span>
+                    </div>
+                    <h3>Volo per Tirana & Arrivo a Ksamil</h3>
+                    <ul class="timeline-list">
+                        <li><strong>07:40</strong> • Decollo da <strong>Roma Ciampino (CIA)</strong>, atterraggio a Tirana alle <strong>09:05</strong>.</li>
+                        <li><strong>09:30</strong> • Trasferimento con Fesim Taxi Tirana (2 van, ~3.5-4 ore) verso sud.</li>
+                        <li><strong>13:00</strong> • Check-in all'<strong>Hotel Mare</strong> (Rruga Riviera, 9607 Ksamil), pranzo sul mare e primo bagno.</li>
+                        <li><strong>Sera</strong> • Cena leggera, giro per il paese per scoprire il lungomare e nanna presto.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="tip"><i class="fa-solid fa-hotel"></i> Base fissa all'Hotel Mare a Ksamil!</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 2 -->
+            <article class="day-card" data-day="day-2">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Bora Bora Beach">
+                    <span class="day-tag">GIORNO 2 • MARTEDÌ 4 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge mare">Mare Cristallino</span>
+                        <span class="badge party">Movida</span>
+                    </div>
+                    <h3>Ksamil Beach, Bora Bora & 5 Isole</h3>
+                    <ul class="timeline-list">
+                        <li><strong>Mattina</strong> • Ksamil Beach / Bora Bora (sabbia bianca e molo per le isole). Lettini: 10-30€ al giorno.</li>
+                        <li><strong>Opzione lido</strong> • Riprovare <a href="https://pemaethate.com/" target="_blank">Pema e Thate</a> per i lettini a rete o Abiori.</li>
+                        <li><strong>Pomeriggio</strong> • <a href="https://www.getyourguide.com/ksamil-l120680/ksamil-boat-trip-to-5-islands-of-ksamil-twin-islands-t992657/" target="_blank">Boat Trip 5 Isole (20€/pers)</a> dal porto vicino.</li>
+                        <li><strong>Sera</strong> • Aperitivo da <em>Vamos Cocktail Bar</em> o <em>Dips</em>, poi movida su <em>Bianco Ksamil</em> o <em>Principotes & Tulum</em>.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://pemaethate.com/" target="_blank" class="ext-link">Sito Pema e Thate <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 3 -->
+            <article class="day-card" data-day="day-3">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80" alt="Butrint">
+                    <span class="day-tag">GIORNO 3 • MERCOLEDÌ 5 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge nature">Natura & UNESCO</span>
+                        <span class="badge sport">Kayak</span>
+                    </div>
+                    <h3>Blue Eye, Butrint & Kayak sul Tramonto</h3>
+                    <ul class="timeline-list">
+                        <li><strong>08:00</strong> • Partenza presto per <strong>Blue Eye / Syri i Kaltër</strong> (ingresso 50 LEK, ~0.50€). Acqua gelida e colori assurdi!</li>
+                        <li><strong>11:30</strong> • Visita a <strong>Butrint</strong> (Parco archeologico UNESCO, 700 LEK) + traghetto a corda per il Castello Veneziano.</li>
+                        <li><strong>Pomeriggio</strong> • Kayak o SUP sulla spiaggia tramite <a href="https://ksamilwatersport.com" target="_blank">Ksamil Water Sport</a>.</li>
+                        <li><strong>Sera</strong> • Cena tipica albanese (byrek, tavë kosi, carne alla brace) e serata chill.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="tip"><i class="fa-solid fa-coins"></i> Portare contanti per ingresso al Blue Eye!</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 4 -->
+            <article class="day-card" data-day="day-4">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Mirror Beach">
+                    <span class="day-tag">GIORNO 4 • GIOVEDÌ 6 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge mare">On The Road</span>
+                        <span class="badge mare">Top Spiagge</span>
+                    </div>
+                    <h3>Mirror, Seagull & Monastery Beach</h3>
+                    <ul class="timeline-list">
+                        <li><strong>Mattina</strong> • <strong>Monastery Beach</strong> (a 5 km verso Saranda, spiaggia tranquilla in incantevole baia).</li>
+                        <li><strong>Pranzo & Mare</strong> • <strong>Seagull Beach (Pulëbardha)</strong>: acque limpidissime perfette per snorkeling.</li>
+                        <li><strong>Pomeriggio / Tramonto</strong> • <strong>Mirror Beach (Pasqyra)</strong>: famosa per i riflessi dorati del sole sulle rocce bianche.</li>
+                        <li><strong>Sera</strong> • Cena a <strong>Saranda</strong> con passeggiata sul lungomare, poi rientro in taxi a Ksamil.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="tip"><i class="fa-solid fa-route"></i> Dintorni di Ksamil: 15-20 min in taxi tra le tappe.</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 5 (MODIFICATO: GITA A CORFÙ + PARTENZA AMICO) -->
+            <article class="day-card" data-day="day-5">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Corfù Grecia">
+                    <span class="day-tag">GIORNO 5 • VENERDÌ 7 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge mare">Grecia • Corfù</span>
+                        <span class="badge relax">Traghetto</span>
+                    </div>
+                    <h3>Gita a Corfù (Traghetto) & Partenza dell'Amico</h3>
+                    <ul class="timeline-list">
+                        <li><strong>Mattina Presto</strong> • Traghetto Saranda–Corfù (solo ~30-50 min di traversata tra la costa ionica greca e l'Albania, fino a 14 partenze al giorno con <a href="https://ionianseaways.com/" target="_blank">Ionian Seaways</a> o <a href="https://finikas-lines.com/" target="_blank">Finikas Lines</a>). Prezzi tra 16€ e 70€ a testa.</li>
+                        <li><strong>Attenzione Documenti</strong> • Cittadini UE con Carta d'Identità o Passaporto. <strong>L'amico che prende il volo da Corfù</strong> deve avere il Passaporto per sicurezza e portare <strong>tutto il bagaglio</strong> perché riparte da lì!</li>
+                        <li><strong>Giornata a Corfù</strong> • Esplorazione per il gruppo: Città Vecchia (UNESCO), Liston, Kanoni/Isola del Mouse o spiaggia di Paleokastritsa.</li>
+                        <li><strong>Ritorno</strong> • Rientro col traghetto a Saranda (ultime corse tra le 20:00 e le 22:30).</li>
+                        <li><strong>Sera</strong> • Check-out dal primo soggiorno all'Hotel Mare e check-in nel secondo (stesso hotel, camera configurata per una persona in meno).</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.ferryhopper.com/it/#/" target="_blank" class="ext-link">Prenota Traghetti Corfù <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 6 (MODIFICATO: RAFTING VJOSA QUI + SERATA CLOU) -->
+            <article class="day-card" data-day="day-6">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80" alt="Rafting Vjosa">
+                    <span class="day-tag">GIORNO 6 • SABATO 8 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge sport">Adrenalina • Vjosa</span>
+                        <span class="badge party">Big Party Night</span>
+                    </div>
+                    <h3>Rafting sul Fiume Vjosa & Clubbing Night</h3>
+                    <ul class="timeline-list">
+                        <li><strong>Giornata Intera</strong> • Escursione rafting a Përmet sull'ultimo fiume selvaggio d'Europa, la <strong>Vjosa</strong>!</li>
+                        <li><strong>Opzioni Rafting</strong> • Tour "veloce" da Saranda/Ksamil (~50€/persona, 7 ore totali) oppure tour completo con <strong>4x4 + rafting + Terme naturali di Benja + pranzo tipico</strong> (~140€/persona, 9 ore).</li>
+                        <li><strong>Sera Clou</strong> • Serata finale a Ksamil! Punta su un beach club con DJ set fino a tardi per il grande party: <strong>Bianco Ksamil Islands</strong>, <strong>Principotes</strong> o <strong>Tulum</strong>.</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://www.getyourguide.com" target="_blank" class="ext-link">Cerca Rafting su GetYourGuide <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 7 -->
+            <article class="day-card" data-day="day-7">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=800&q=80" alt="Tirana City">
+                    <span class="day-tag">GIORNO 7 • DOMENICA 9 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge relax">Tirana</span>
+                        <span class="badge party">Casinò</span>
+                    </div>
+                    <h3>Trasferimento a Tirana, Poligono & Casinò</h3>
+                    <ul class="timeline-list">
+                        <li><strong>11:00</strong> • Partenza in taxi (4 ore) da Ksamil a <strong>Tirana</strong>. Check-in in hotel.</li>
+                        <li><strong>Pomeriggio</strong> • <a href="https://www.google.com/maps/search/Action+Target+Poligon+Tirana/" target="_blank">Action Target Poligon</a> (0.80€/proiettile, min 10€).</li>
+                        <li><strong>Sera</strong> • Cena in capitale e serata al Casinò: <strong>Grand Casino Tirana</strong> (Maritim Plaza), <strong>Regency Casino</strong> o <strong>Arena Casino</strong> (con DJ set).</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="tip"><i class="fa-solid fa-dice"></i> Arena Casino offre vibe da club di lusso con DJ!</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- GIORNO 8 -->
+            <article class="day-card" data-day="day-8">
+                <div class="day-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80" alt="Piazza Skanderbeg">
+                    <span class="day-tag">GIORNO 8 • LUNEDÌ 10 AGOSTO</span>
+                </div>
+                <div class="day-content">
+                    <div class="day-badges">
+                        <span class="badge nature">Cultura</span>
+                        <span class="badge relax">Ritorno</span>
+                    </div>
+                    <h3>Centro Storico di Tirana & Volo per Ciampino</h3>
+                    <ul class="timeline-list">
+                        <li><strong>Mattina</strong> • Piazza Skanderbeg, Moschea Et'hem Bey, Torre dell'Orologio e Piramide di Tirana.</li>
+                        <li><strong>Pranzo</strong> • Ultimo pranzo tipico in centro e shopping di souvenir.</li>
+                        <li><strong>Pomeriggio</strong> • Trasferimento per l'aeroporto di Tirana Nënë Tereza (TIA).</li>
+                        <li><strong>19:45</strong> • Volo di rientro (partenza da Tirana alle 19:45, atterraggio a <strong>Roma Ciampino alle 21:10</strong>)!</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="tip"><i class="fa-solid fa-heart"></i> Ricordi epici & foto da condividere con tutta la SQUAD.</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- STRUMENTI INTERATTIVI: BUDGET & VALUTA -->
+    <section id="budget-tool" class="section container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-calculator"></i> Budget Splitter & Cambio Valuta</h2>
+            <p>Calcola in tempo reale la quota a persona e converti al volo da Euro a Lek Albanese (e viceversa).</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- CALCOLATORE BUDGET -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <h3><i class="fa-solid fa-users-viewfinder"></i> Ripartitore Spese SQUAD</h3>
+                    <span class="pill-sm">Interattivo</span>
+                </div>
+                <p class="tool-sub">Inserisci le spese del viaggio per dividere equamente la quota per persona.</p>
+
+                <div class="calc-form">
+                    <div class="form-group">
+                        <label for="num-people">Numero Amici nel Gruppo</label>
+                        <select id="num-people">
+                            <option value="8" selected>8 Persone (Dal 3 al 7 Agosto)</option>
+                            <option value="7">7 Persone (Dal 7 al 10 Agosto)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taxi-cost">Taxi A/R Tirana-Ksamil (€ totali)</label>
+                        <input type="number" id="taxi-cost" value="600" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hotel-cost">Hotel Totale per tutti (€, opzionale)</label>
+                        <input type="number" id="hotel-cost" value="2000" placeholder="Es. 2000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activities-cost">Escursioni & Rafting (€ per persona)</label>
+                        <input type="number" id="activities-cost" value="70" placeholder="Es. 70">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="food-budget">Budget Cibo/Drink al giorno (€ a testa)</label>
+                        <input type="number" id="food-budget" value="40" placeholder="Es. 40">
+                    </div>
+
+                    <div class="result-box">
+                        <div class="result-label">QUOTA STIMATA PER PERSONA (7 GIORNI):</div>
+                        <div class="result-value" id="per-person-result">0 €</div>
+                        <div class="result-breakdown" id="breakdown-text">Calcolo in corso...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONVERTITORE VALUTA -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <h3><i class="fa-solid fa-money-bill-1-wave"></i> Convertitore Rapido € ↔ LEK</h3>
+                    <span class="pill-sm">1 € = 100 LEK</span>
+                </div>
+                <p class="tool-sub">Usa questo convertitore rapido al lido, in spiaggia o al casinò.</p>
+
+                <div class="currency-box">
+                    <div class="currency-input-wrap">
+                        <label>Importo in EURO (€)</label>
+                        <div class="input-icon">
+                            <span>€</span>
+                            <input type="number" id="euro-input" value="10" min="0" step="0.5">
+                        </div>
+                    </div>
+
+                    <div class="currency-swap-icon">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </div>
+
+                    <div class="currency-input-wrap">
+                        <label>Importo in LEK ALBANESI (LEK)</label>
+                        <div class="input-icon">
+                            <span>LEK</span>
+                            <input type="number" id="lek-input" value="1000" min="0" step="50">
+                        </div>
+                    </div>
+
+                    <div class="quick-conversions">
+                        <span><strong>Prezzi tipici in Albania:</strong></span>
+                        <div class="chips-row">
+                            <button class="chip-btn" data-eur="0.50">Blue Eye (50 LEK / 0.50€)</button>
+                            <button class="chip-btn" data-eur="7">Butrint (700 LEK / 7€)</button>
+                            <button class="chip-btn" data-eur="15">Lettino Lido (1500 LEK / 15€)</button>
+                            <button class="chip-btn" data-eur="25">Traghetto Corfù (~25€)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLAYLIST RECOMMENDATION / VIBE -->
+                <div class="vibe-box">
+                    <div class="vibe-title"><i class="fa-solid fa-headphones"></i> SQUAD PLAYLIST & MOVIDA</div>
+                    <p>I lidi aprono la musica dal pomeriggio fino a mezzanotte all'aperto. Poi ci si sposta nei club indoor!</p>
+                    <div class="club-tags">
+                        <span>🔥 Bianco Ksamil</span>
+                        <span>🌴 Principotes</span>
+                        <span>🍸 Vamos Bar</span>
+                        <span>🎰 Arena Casino</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKLIST DI PARTENZA INTERATTIVA -->
+    <section id="checklist" class="section container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-list-check"></i> Checklist "Prima che si Parta"</h2>
+            <p>Spunta le cose fatte: i tuoi progressi vengono salvati in automatico nel browser!</p>
+        </div>
+
+        <div class="checklist-card">
+            <div class="progress-container">
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" id="checklist-progress"></div>
+                </div>
+                <div class="progress-text" id="progress-text">0% Completato</div>
+            </div>
+
+            <ul class="checklist-list" id="checklist-items">
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-esim">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Scaricare l'E-SIM</strong> (Holafly o Roamic ~20€) prima di salire in aereo per avere internet a Tirana.
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-taxi">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Riconfermare i 2 taxi</strong> di Fesim Taxi Tirana su WhatsApp il giorno prima del volo.
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-lido">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Contattare Pema e Thate</strong> (o alternativa Bora Bora/Abiori) per prenotare i lettini con rete sull'acqua.
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-corfu">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Prenotare il traghetto Saranda–Corfù per il 7 agosto</strong> con anticipo (Ionian Seaways, Finikas Lines o Ferryhopper).
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-rafting-8">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Prenotare il Rafting sul Vjosa del sabato 8 agosto</strong> con anticipo (GetYourGuide o operatori a Përmet).
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <label class="check-item">
+                        <input type="checkbox" data-id="chk-contanti">
+                        <span class="custom-chk"></span>
+                        <span class="chk-label">
+                            <strong>Portare contanti (anche in Euro o prelevare Lek)</strong> per l'ingresso di 50 Lek al Blue Eye e piccoli bar in spiaggia.
+                        </span>
+                    </label>
+                </li>
+            </ul>
+
+            <div class="checklist-actions">
+                <button class="btn-reset-chk" id="reset-chk"><i class="fa-solid fa-rotate-right"></i> Reset Checklist</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <span class="footer-brand">🇦🇱 ALBANIA SQUAD 2026</span>
+                <p>Progettato con <i class="fa-solid fa-heart text-danger"></i> per il viaggio di Ksamil & Tirana dal 3 al 10 Agosto.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#hero">Torna su <i class="fa-solid fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
