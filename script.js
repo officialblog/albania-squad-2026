@@ -129,66 +129,75 @@ function initBudgetCalculator() {
     const inputs = [numPeopleSelect, taxiInput, hotelInput, activitiesInput, foodInput];
     if (!inputs.every(Boolean) || !resultValue || !breakdownText) return;
 
-    // Valori default hotel per ciascun gruppo
-    const HOTEL_DEFAULT = {
-        7: 850,   // 700€ (Ksamil 7–9 ago) + 150€ (Tirana 9–10 ago)
-        8: 1800   // 1800€ (Ksamil 3–7 ago)
+    // Valori default hotel e taxi per ciascuna opzione
+    const DEFAULTS = {
+        '8':   { hotel: 1800, taxi: 300,  days: 4, label: '1° Periodo (3–7 Ago • 8 pers)' },
+        '7':   { hotel: 850,  taxi: 300,  days: 3, label: '2° Periodo (7–10 Ago • 7 pers)' },
+        'all': { hotel: 2650, taxi: 600,  days: 7, label: 'Viaggio Completo (3–10 Ago • 7 notti)' }
     };
 
-    // Aggiorna il campo hotel e il placeholder quando cambia il numero persone
-    function updateHotelDefault() {
-        const people = parseInt(numPeopleSelect.value, 10) || 7;
-        const def = HOTEL_DEFAULT[people] || HOTEL_DEFAULT[7];
-        hotelInput.value = def;
-        hotelInput.placeholder = `Es. ${def}`;
+    // Aggiorna sia il campo hotel che il campo taxi quando cambia il periodo
+    function updateDefaults() {
+        const mode = numPeopleSelect.value || '8';
+        const def  = DEFAULTS[mode] || DEFAULTS['8'];
+        hotelInput.value       = def.hotel;
+        hotelInput.placeholder = `Es. ${def.hotel}`;
+        taxiInput.value        = def.taxi;
+        taxiInput.placeholder  = `Es. ${def.taxi}`;
     }
 
     function calculate() {
-        const people = parseInt(numPeopleSelect.value, 10) || 7;
-        const taxiTotal = parseFloat(taxiInput.value) || 300;
-        const hotelTotal = parseFloat(hotelInput.value) || (HOTEL_DEFAULT[people] || 850);
-        const activitiesPerPerson = parseFloat(activitiesInput.value) || 0;
-        const foodDaily = parseFloat(foodInput.value) || 0;
+        const mode                = numPeopleSelect.value || '8';
+        const def                 = DEFAULTS[mode] || DEFAULTS['8'];
+        const taxiTotal           = parseFloat(taxiInput.value)        || def.taxi;
+        const hotelTotal          = parseFloat(hotelInput.value)       || def.hotel;
+        const activitiesPerPerson = parseFloat(activitiesInput.value)  || 0;
+        const foodDaily           = parseFloat(foodInput.value)        || 0;
 
         let hotelSharePerPerson = 0;
-        let taxiSharePerPerson = 0;
-        let daysCount = 7;
-        let hotelDetail = '';
+        let taxiSharePerPerson  = 0;
+        const daysCount         = def.days;
+        let hotelDetail         = '';
+        let taxiDetail          = '';
 
-        if (people === 8) {
-            // Amico che fa solo 3–7 agosto (4 notti a Ksamil, solo andata in taxi)
-            daysCount = 4;
-            hotelSharePerPerson = hotelTotal / 8;           // es. 1800/8 = 225€
-            taxiSharePerPerson = (taxiTotal / 2) / 8;     // solo andata
-            hotelDetail = `Hotel 3–7 Ago Ksamil (${Math.round(hotelTotal / 8)}€/pers)`;
-        } else {
-            // 7 persone: viaggio completo 7 notti (3–10 agosto)
-            daysCount = 7;
-            // Il campo hotel contiene 850 = 700+150 → quota per 7 persone
+        if (mode === '8') {
+            // 1° Periodo: 3–7 agosto (4 notti a Ksamil, divisi per 8 persone)
+            hotelSharePerPerson = hotelTotal / 8;
+            taxiSharePerPerson  = taxiTotal / 8;
+            hotelDetail         = `Hotel 3–7 Ago (${Math.round(hotelSharePerPerson)}€)`;
+            taxiDetail          = `Taxi Andata (${Math.round(taxiSharePerPerson)}€)`;
+        } else if (mode === '7') {
+            // 2° Periodo: 7–10 agosto (3 notti: 700€ Ksamil + 150€ Tirana, divisi per 7 persone)
             hotelSharePerPerson = hotelTotal / 7;
-            // Taxi A/R: andata (300/8) + ritorno (300/7)
-            taxiSharePerPerson = ((taxiTotal / 2) / 8) + ((taxiTotal / 2) / 7);
-            hotelDetail = `Hotel 7–10 Ago (700€ Ksamil + 150€ Tirana) → ${Math.round(hotelTotal / 7)}€/pers`;
+            taxiSharePerPerson  = taxiTotal / 7;
+            hotelDetail         = `Hotel 7–10 Ago (${Math.round(hotelSharePerPerson)}€)`;
+            taxiDetail          = `Taxi Ritorno (${Math.round(taxiSharePerPerson)}€)`;
+        } else {
+            // Viaggio Completo (7 notti • 3–10 agosto): somma quote 1° e 2° periodo
+            const hotelRatio = hotelTotal / 2650;
+            const taxiRatio  = taxiTotal / 600;
+            hotelSharePerPerson = ((1800 / 8) + (850 / 7)) * (isNaN(hotelRatio) ? 1 : hotelRatio);
+            taxiSharePerPerson  = ((300 / 8) + (300 / 7)) * (isNaN(taxiRatio) ? 1 : taxiRatio);
+            hotelDetail         = `Hotel 3–10 Ago (~${Math.round(hotelSharePerPerson)}€: 225€ 1° per. + 121€ 2° per.)`;
+            taxiDetail          = `Taxi A/R (~${Math.round(taxiSharePerPerson)}€)`;
         }
 
         const foodTotalPerPerson = foodDaily * daysCount;
-        const totalPerPerson = hotelSharePerPerson + taxiSharePerPerson + activitiesPerPerson + foodTotalPerPerson;
+        const totalPerPerson     = hotelSharePerPerson + taxiSharePerPerson + activitiesPerPerson + foodTotalPerPerson;
 
         resultValue.textContent = `~ ${Math.round(totalPerPerson)} €`;
         breakdownText.innerHTML = `
-            <strong>Dettaglio (${daysCount} notti · ${people} persone):</strong><br>
-            ${hotelDetail} + Taxi (${Math.round(taxiSharePerPerson)}€) +
-            Attività (${activitiesPerPerson}€) + Cibo/Drink (${Math.round(foodTotalPerPerson)}€)
+            <strong>Dettaglio (${def.label}):</strong><br>
+            ${hotelDetail} + ${taxiDetail} + Attività (${activitiesPerPerson}€) + Cibo/Drink (${Math.round(foodTotalPerPerson)}€)
         `;
 
-        // Aggiorna aria per screen reader
         const resultBox = resultValue.closest('[role="status"]');
         if (resultBox) resultBox.setAttribute('aria-label', `Quota stimata: circa ${Math.round(totalPerPerson)} euro`);
     }
 
     // Quando cambia il numero persone → aggiorna il campo hotel poi ricalcola
     numPeopleSelect.addEventListener('change', () => {
-        updateHotelDefault();
+        updateDefaults();
         calculate();
     });
 
@@ -199,7 +208,7 @@ function initBudgetCalculator() {
     });
 
     // Inizializzazione
-    updateHotelDefault();
+    updateDefaults();
     calculate();
 }
 

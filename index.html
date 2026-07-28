@@ -571,19 +571,20 @@
 
                 <div class="calc-form">
                     <div class="form-group">
-                        <label for="num-people">Quota Viaggio da Calcolare</label>
+                        <label for="num-people">Periodo e Quota Viaggio da Calcolare</label>
                         <select id="num-people">
-                            <option value="7" selected>7 Persone (3–10 Ago • Viaggio Completo 7 Notti)</option>
-                            <option value="8">8 Persone (3–7 Ago • 4 Notti solo Ksamil)</option>
+                            <option value="8" selected>1° Periodo: 3–7 Ago (8 Persone • 4 Notti Ksamil)</option>
+                            <option value="7">2° Periodo: 7–10 Ago (7 Persone • 3 Notti Ksamil &amp; Tirana)</option>
+                            <option value="all">Viaggio Completo: 3–10 Ago (7 Notti • 1° + 2° Periodo)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="taxi-cost">Taxi A/R Tirana–Ksamil (€ totali)</label>
-                        <input type="number" id="taxi-cost" value="600" min="0" inputmode="numeric">
+                        <label for="taxi-cost">Taxi (€ totali periodo) — si aggiorna in automatico</label>
+                        <input type="number" id="taxi-cost" value="300" min="0" inputmode="numeric">
                     </div>
                     <div class="form-group">
-                        <label for="hotel-cost">Hotel Totale (€) — si aggiorna automaticamente</label>
-                        <input type="number" id="hotel-cost" value="850" placeholder="Es. 850" inputmode="numeric">
+                        <label for="hotel-cost">Hotel (€ totali periodo) — si aggiorna in automatico</label>
+                        <input type="number" id="hotel-cost" value="1800" placeholder="Es. 1800" inputmode="numeric">
                     </div>
                     <div class="form-group">
                         <label for="activities-cost">Escursioni &amp; Rafting (€ per persona)</label>
