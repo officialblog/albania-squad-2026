@@ -1363,14 +1363,21 @@ a { color: inherit; }
    UTILITY / ANIMATIONS
    ========================================================================== */
 
-/* Fade-in on scroll-reveal (JS adds .visible class) */
-.reveal {
+/* Fade-in on scroll-reveal
+   IMPORTANTE: gli elementi sono visibili di default.
+   Il body riceve .js-loaded dal JS — solo allora gli elementi .reveal
+   vengono nascosti e l'IntersectionObserver li fa riapparire.
+   Questo previene contenuto invisibile su Safari iOS se l'Observer non scatta. */
+.js-loaded .reveal {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    transform: translateY(18px);
+    transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
 }
 
-.reveal.visible { opacity: 1; transform: none; }
+.js-loaded .reveal.visible {
+    opacity: 1;
+    transform: none;
+}
 
 /* Floating animation for hero badge */
 @keyframes float {

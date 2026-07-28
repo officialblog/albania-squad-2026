@@ -328,22 +328,45 @@ function initChecklist() {
    6. SCROLL REVEAL — anima le card e sezioni all'entrata nel viewport
    ────────────────────────────────────────────────────────────────────────── */
 function initScrollReveal() {
-    // Usa IntersectionObserver se disponibile (tutti i browser moderni)
+    const reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    // Passo 1: aggiungi js-loaded al body PRIMA di nascondere qualsiasi cosa.
+    // Il CSS nasconde .reveal solo se body.js-loaded esiste — fallback sicuro.
+    document.body.classList.add('js-loaded');
+
+    // Passo 2: mostra subito gli elementi già nel viewport (critico su iOS al caricamento)
+    function revealNow(el) {
+        el.classList.add('visible');
+    }
+
+    // Passo 3: Failsafe — dopo 1.5s mostra tutto ciò che è ancora nascosto
+    // (protegge da qualsiasi bug dell'Observer su Safari)
+    const failsafe = setTimeout(() => {
+        reveals.forEach(el => { if (!el.classList.contains('visible')) revealNow(el); });
+    }, 1500);
+
     if (!('IntersectionObserver' in window)) {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        // Browser senza supporto → mostra tutto subito
+        reveals.forEach(revealNow);
+        clearTimeout(failsafe);
         return;
     }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                revealNow(entry.target);
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, {
+        threshold: 0,
+        // rootMargin positivo: inizia ad osservare 60px prima che l'elemento entri nel viewport
+        rootMargin: '60px 0px 60px 0px'
+    });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    reveals.forEach(el => observer.observe(el));
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
