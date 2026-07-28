@@ -138,7 +138,7 @@ function initBudgetCalculator() {
     // Aggiorna il campo hotel e il placeholder quando cambia il numero persone
     function updateHotelDefault() {
         const people = parseInt(numPeopleSelect.value, 10) || 7;
-        const def    = HOTEL_DEFAULT[people] ?? HOTEL_DEFAULT[7];
+        const def    = HOTEL_DEFAULT[people] || HOTEL_DEFAULT[7];
         hotelInput.value       = def;
         hotelInput.placeholder = `Es. ${def}`;
     }
@@ -146,7 +146,7 @@ function initBudgetCalculator() {
     function calculate() {
         const people              = parseInt(numPeopleSelect.value, 10) || 7;
         const taxiTotal           = parseFloat(taxiInput.value)        || 600;
-        const hotelTotal          = parseFloat(hotelInput.value)       || HOTEL_DEFAULT[people] ?? 850;
+        const hotelTotal          = parseFloat(hotelInput.value)       || (HOTEL_DEFAULT[people] || 850);
         const activitiesPerPerson = parseFloat(activitiesInput.value)  || 0;
         const foodDaily           = parseFloat(foodInput.value)        || 0;
 
