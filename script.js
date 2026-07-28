@@ -107,27 +107,49 @@ function initBudgetCalculator() {
     if (!inputs.every(Boolean) || !resultValue || !breakdownText) return;
 
     function calculate() {
-        const people = parseInt(numPeopleSelect.value, 10) || 8;
-        const taxiTotal = parseFloat(taxiInput.value) || 0;
-        const hotelTotal = parseFloat(hotelInput.value) || 0;
+        const people = parseInt(numPeopleSelect.value, 10) || 7;
+        const taxiTotal = parseFloat(taxiInput.value) || 600;
+        const hotelTotal = parseFloat(hotelInput.value) || 2650;
         const activitiesPerPerson = parseFloat(activitiesInput.value) || 0;
         const foodDaily = parseFloat(foodInput.value) || 0;
 
-        // Ipotizziamo 7 giorni effettivi per vitto
-        const foodTotalPerPerson = foodDaily * 7;
+        let hotelSharePerPerson = 0;
+        let taxiSharePerPerson = 0;
+        let daysCount = 7;
+        let hotelDetail = "";
 
-        // Quota fissa di gruppo divisa per i partecipanti
-        const groupSharePerPerson = (taxiTotal + hotelTotal) / people;
+        if (people === 8) {
+            // Amico che fa solo 3-7 agosto (4 notti a Ksamil)
+            daysCount = 4;
+            // Quota hotel: 1800€ / 8 = 225€
+            hotelSharePerPerson = 1800 / 8;
+            // Quota taxi andata (Tirana -> Ksamil): 300€ / 8 = 37.50€
+            taxiSharePerPerson = (taxiTotal / 2) / 8;
+            hotelDetail = "Hotel 3–7 Ago Ksamil (225€)";
+        } else {
+            // 7 persone per l'intero viaggio (3-10 agosto, 7 notti)
+            daysCount = 7;
+            // Quota hotel: (1800€ / 8 = 225€) + (700€ / 7 = 100€) + (150€ / 7 = ~21.43€) = ~346.43€
+            hotelSharePerPerson = (1800 / 8) + (700 / 7) + (150 / 7);
+            // Se l'importo totale hotel è stato cambiato rispetto a 2650, riscaliamo
+            if (hotelTotal !== 2650 && hotelTotal > 0) {
+                hotelSharePerPerson = (hotelTotal / 2650) * hotelSharePerPerson;
+            }
+            // Quota taxi A/R: Andata (300/8) + Ritorno (300/7) = 37.50 + 42.86 = 80.36€
+            taxiSharePerPerson = ((taxiTotal / 2) / 8) + ((taxiTotal / 2) / 7);
+            hotelDetail = "Hotel (~346€: 225€+100€ Ksamil + 21€ Tirana)";
+        }
 
-        // Quota individuale
-        const totalPerPerson = groupSharePerPerson + activitiesPerPerson + foodTotalPerPerson;
+        const foodTotalPerPerson = foodDaily * daysCount;
+        const totalPerPerson = hotelSharePerPerson + taxiSharePerPerson + activitiesPerPerson + foodTotalPerPerson;
 
         resultValue.textContent = `~ ${Math.round(totalPerPerson)} €`;
         breakdownText.innerHTML = `
-            <strong>Dettaglio a testa:</strong> 
-            Taxi+Hotel (~${Math.round(groupSharePerPerson)}€) + 
+            <strong>Dettaglio (${daysCount} Notti - ${people} Persone):</strong> 
+            ${hotelDetail} + 
+            Taxi (${Math.round(taxiSharePerPerson)}€) + 
             Attività (${activitiesPerPerson}€) + 
-            Cibo/Drink 7 gg (~${foodTotalPerPerson}€)
+            Cibo/Drink (${Math.round(foodTotalPerPerson)}€)
         `;
     }
 
