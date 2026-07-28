@@ -129,10 +129,24 @@ function initBudgetCalculator() {
     const inputs = [numPeopleSelect, taxiInput, hotelInput, activitiesInput, foodInput];
     if (!inputs.every(Boolean) || !resultValue || !breakdownText) return;
 
+    // Valori default hotel per ciascun gruppo
+    const HOTEL_DEFAULT = {
+        7: 850,   // 700€ (Ksamil 7–9 ago) + 150€ (Tirana 9–10 ago)
+        8: 1800   // 1800€ (Ksamil 3–7 ago)
+    };
+
+    // Aggiorna il campo hotel e il placeholder quando cambia il numero persone
+    function updateHotelDefault() {
+        const people = parseInt(numPeopleSelect.value, 10) || 7;
+        const def    = HOTEL_DEFAULT[people] ?? HOTEL_DEFAULT[7];
+        hotelInput.value       = def;
+        hotelInput.placeholder = `Es. ${def}`;
+    }
+
     function calculate() {
         const people              = parseInt(numPeopleSelect.value, 10) || 7;
         const taxiTotal           = parseFloat(taxiInput.value)        || 600;
-        const hotelTotal          = parseFloat(hotelInput.value)       || 2650;
+        const hotelTotal          = parseFloat(hotelInput.value)       || HOTEL_DEFAULT[people] ?? 850;
         const activitiesPerPerson = parseFloat(activitiesInput.value)  || 0;
         const foodDaily           = parseFloat(foodInput.value)        || 0;
 
@@ -142,23 +156,19 @@ function initBudgetCalculator() {
         let hotelDetail         = '';
 
         if (people === 8) {
-            // Amico che fa solo 3–7 agosto (4 notti a Ksamil, andata taxi)
-            daysCount             = 4;
-            hotelSharePerPerson   = 1800 / 8;           // 225€
-            taxiSharePerPerson    = (taxiTotal / 2) / 8; // solo andata
-            hotelDetail           = 'Hotel 3–7 Ago Ksamil (225€)';
+            // Amico che fa solo 3–7 agosto (4 notti a Ksamil, solo andata in taxi)
+            daysCount           = 4;
+            hotelSharePerPerson = hotelTotal / 8;           // es. 1800/8 = 225€
+            taxiSharePerPerson  = (taxiTotal / 2) / 8;     // solo andata
+            hotelDetail         = `Hotel 3–7 Ago Ksamil (${Math.round(hotelTotal / 8)}€/pers)`;
         } else {
             // 7 persone: viaggio completo 7 notti (3–10 agosto)
-            daysCount             = 7;
-            // Quote esatte: 1800/8 + 700/7 + 150/7 = 225 + 100 + ~21.43 = ~346.43€
-            hotelSharePerPerson   = (1800 / 8) + (700 / 7) + (150 / 7);
-            // Se l'utente ha modificato il campo hotel, riscala proporzionalmente
-            if (hotelTotal !== 2650 && hotelTotal > 0) {
-                hotelSharePerPerson = (hotelTotal / 2650) * hotelSharePerPerson;
-            }
-            // Taxi A/R: andata (300/8) + ritorno (300/7) = 37.50 + 42.86 = ~80.36€
-            taxiSharePerPerson    = ((taxiTotal / 2) / 8) + ((taxiTotal / 2) / 7);
-            hotelDetail           = 'Hotel (~346€: 225€+100€ Ksamil + 21€ Tirana)';
+            daysCount           = 7;
+            // Il campo hotel contiene 850 = 700+150 → quota per 7 persone
+            hotelSharePerPerson = hotelTotal / 7;
+            // Taxi A/R: andata (300/8) + ritorno (300/7)
+            taxiSharePerPerson  = ((taxiTotal / 2) / 8) + ((taxiTotal / 2) / 7);
+            hotelDetail         = `Hotel 7–10 Ago (700€ Ksamil + 150€ Tirana) → ${Math.round(hotelTotal / 7)}€/pers`;
         }
 
         const foodTotalPerPerson = foodDaily * daysCount;
@@ -171,16 +181,25 @@ function initBudgetCalculator() {
             Attività (${activitiesPerPerson}€) + Cibo/Drink (${Math.round(foodTotalPerPerson)}€)
         `;
 
-        // Aggiorna aria-valuenow per screen reader
+        // Aggiorna aria per screen reader
         const resultBox = resultValue.closest('[role="status"]');
         if (resultBox) resultBox.setAttribute('aria-label', `Quota stimata: circa ${Math.round(totalPerPerson)} euro`);
     }
 
-    inputs.forEach(input => {
+    // Quando cambia il numero persone → aggiorna il campo hotel poi ricalcola
+    numPeopleSelect.addEventListener('change', () => {
+        updateHotelDefault();
+        calculate();
+    });
+
+    // Per gli altri input basta ricalcolare
+    [taxiInput, hotelInput, activitiesInput, foodInput].forEach(input => {
         input.addEventListener('input',  calculate);
         input.addEventListener('change', calculate);
     });
 
+    // Inizializzazione
+    updateHotelDefault();
     calculate();
 }
 
